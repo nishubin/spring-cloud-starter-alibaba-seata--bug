@@ -1,0 +1,27 @@
+spring:
+   application:
+      name: demo-client
+   main:
+      allow-bean-definition-overriding: true
+   cloud:
+      nacos:
+         discovery:
+            server-addr: nacos.test.zjddwl.net:80
+            namespace: eb2616f2-b961-4a3d-8792-07162ca28758
+            metadata:
+               management:
+                  context-path: ${app.name}/actuator
+         config:
+            server-addr: nacos.test.zjddwl.net:80
+            file-extension: yml
+            shared-configs: ddwl-common.yml
+            namespace: eb2616f2-b961-4a3d-8792-07162ca28758
+server:
+   port: 8081
+ribbon:
+   ConnectTimeout: 100000
+   ReadTimeout: 1000000
+   OkToRetryOnAllOperations: false
+feign:
+   sentinel:
+      enabled: true
